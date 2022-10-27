@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,18 +16,18 @@
   <body class="bg-slate-100 font-lato">
     <!-- header start -->
     <header
-      class="absolute top-0 left-0 w-full flex items-center z-10 bg-white h-20"
+      class="absolute top-0 left-0 w-full flex items-center z-10 lg:w-10/12 lg:left-1/2 lg:-translate-x-1/2 bg-white h-20 lg:h-18 lg:font-semibold lg:top-8 transition-all" 
     >
       <div class="container">
         <div class="flex items-center justify-between relative">
           <div class="px-6">
-            <a href="#home">
+            <a href="#">
               <img src="images/umptn-dark.png" class="w-32" alt="Umptn Logo" />
             </a>
           </div>
 
           <div class="flex items-center px-4">
-            <button class="block absolute right-4" type="button" id="hamburger">
+            <button class="block absolute right-4 lg:hidden" type="button" id="hamburger">
               <span
                 class="hamburger-line transition ease-in-out duration-300 origin-top-left"
               ></span>
@@ -38,13 +38,31 @@
                 class="hamburger-line transition ease-in-out duration-300 origin-bottom-left"
               ></span>
             </button>
+
+            <nav id="navbar-menu" class="hidden absolute top-full py-5 shadow-lg bg-white rounded-lg max-w-[250px] w-full right-4 z-[99999] lg:block lg:max-w-full lg:static lg:bg-transparent lg:shadow-none lg:rounded-none">
+              <ul class="block lg:flex lg:items-center ">
+                <li class="group ">
+                  <a href="" class="lg:text-base text-lg text-dark mx-8 py-2 group-hover:text-primary ">Home</a>
+                </li>
+                <li class="group">
+                  <a href="#about" class="lg:text-base text-lg text-dark mx-8 py-2 group-hover:text-primary">Tentang Program</a>
+                </li>
+                <li class="group">
+                  <a href="#program" class="lg:text-base text-lg text-dark mx-8 py-2 group-hover:text-primary">Seleksi</a>
+                </li>
+                <li class="group mt-2 lg:mt-0">
+                  <button class="bg-primary px-5 button text-white py-3 rounded-full">Masuk</button>
+                </li>
+              </ul>
+            </nav>
+
           </div>
         </div>
       </div>
     </header>
     <!-- header end -->
     <!-- hero section start -->
-    <section id="hero">
+    <section id="home">
       <div class="container mt-40 px-2 md:mx-auto">
         <div class="lg:w-10/12 lg:mx-auto">
           <h1 class="text-3xl font-bold text-dark text-center lg:text-5xl">
@@ -90,7 +108,7 @@
             Apa itu UMPTN?
           </h1>
           <p
-            class="mt-4 lg:text-left lg:text-xl text-center text-2xl text-secondary tracking-wider leading-8"
+            class="mt-4 lg:text-left lg:text-xl text-center text-2xl text-secondary tracking-wider leading-8" id="selection"
           >
             Kegiatan seleksi yang ditujukan untuk menyaring talenta digital yang
             siap diserap oleh Perusahaan Teknologi Nasional.
@@ -326,14 +344,31 @@
 
     <script>
       /*
+      * =================
+      * Navbar onscroll behavior
+      * =================
+      */
+      window.onscroll = () => {
+        const header = document.querySelector('header');
+        if (window.pageYOffset > header.offsetTop){
+          header.classList.add('navbar-fixed')
+          header.classList.remove('lg:w-10/12')
+          header.classList.remove('lg:top-8')
+        }else{
+          header.classList.add('lg:w-10/12')
+          header.classList.add('lg:top-8')
+          header.classList.remove('navbar-fixed')
+        }
+      }
+      /*
        * ===============
        * Hamburger button
        * ===============
        */
-
       const hamburgerBtn = document.getElementById("hamburger");
       hamburgerBtn.addEventListener("click", () => {
         hamburgerBtn.classList.toggle("hamburger-active");
+        document.getElementById('navbar-menu').classList.toggle('hidden');
       });
     </script>
   </body>
