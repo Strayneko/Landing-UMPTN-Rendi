@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .hamburger-line {
+    @apply w-[30px] h-[2px] my-2 block bg-dark;
+  }
+  .hamburger-active > span:first-child {
+    @apply rotate-45;
+  }
+  .hamburger-active > span:nth-child(2) {
+    @apply scale-0;
+  }
+  .hamburger-active > span:last-child {
+    @apply -rotate-45;
+  }
+  .button {
+    @apply px-7 py-4 rounded-full font-bold hover:shadow-lg mx-auto flex hover:-translate-y-2 transition ease-in-out duration-300 disabled:bg-indigo-400 disabled:transform-none;
+  }
+  .card {
+    @apply w-full px-4  shadow-lg rounded-lg  overflow-hidden mb-4 bg-white;
+  }
+  .card-text {
+    @apply text-secondary font-semibold text-xl leading-8 tracking-wider text-center lg:text-base lg:h-28;
+  }
+  .card-title {
+    @apply text-center font-bold text-2xl text-dark mb-5 lg:text-base;
+  }
+  .card-tags {
+    @apply justify-center w-3/4 mx-auto flex flex-wrap mt-5 gap-1;
+  }
+  .card-tag-item {
+    @apply bg-secondary w-fit px-4 py-2 text-white rounded-lg font-bold inline lg:text-base lg:font-semibold;
+  }
+  .card-tag-item-long {
+    @apply bg-secondary w-fit mx-2 px-2 py-3 text-white rounded-lg font-bold inline lg:text-sm sm:text-sm sm:tracking-tight md:tracking-normal;
+  }
+  .card-img {
+    @apply lg:h-[80px] mt-5 w-full;
+  }
+}
